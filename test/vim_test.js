@@ -2017,7 +2017,7 @@ testVim('scrollMotion', function(cm, vim, helpers){
   prevScrollInfo = cm.getScrollInfo();
   helpers.doKeys('<C-e>');
   eq(1, cm.getCursor().line);
-  eq(true, prevScrollInfo.top < cm.getScrollInfo().top);
+  is(prevScrollInfo.top < cm.getScrollInfo().top);
   // Jump to the end of the sandbox.
   cm.setCursor(1000, 0);
   prevCursor = cm.getCursor();
@@ -2027,7 +2027,7 @@ testVim('scrollMotion', function(cm, vim, helpers){
   prevScrollInfo = cm.getScrollInfo();
   helpers.doKeys('<C-y>');
   eq(prevCursor.line - 1, cm.getCursor().line);
-  eq(true, prevScrollInfo.top > cm.getScrollInfo().top);
+  is(prevScrollInfo.top > cm.getScrollInfo().top);
 }, { value: scrollMotionSandbox});
 
 var squareBracketMotionSandbox = ''+
